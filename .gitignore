@@ -43,3 +43,6 @@ Temporary Items
 .apdisk
 *.obj
 DispatchedUiAutomation_orig.rc
+*.opensdf
+Win32/
+x64/
