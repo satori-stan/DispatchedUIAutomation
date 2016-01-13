@@ -1,0 +1,7 @@
+LIBRARY DISPATCHEDUIAUTOMATION
+DESCRIPTION `DISPATCHEDUIAUTOMATION Dynamic Link Library' 
+EXPORTS
+	DllGetClassObject = ProxyDllGetClassObject PRIVATE
+	DllCanUnloadNow = ProxyDllCanUnloadNow PRIVATE
+	DllRegisterServer PRIVATE
+	DllUnregisterServer PRIVATE

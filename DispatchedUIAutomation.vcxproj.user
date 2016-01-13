@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LocalDebuggerCommand>c:\Windows\sysWOW64\cscript.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>$(OutDir)\JScriptConsole.js</LocalDebuggerCommandArguments>
+    <LocalDebuggerAttach>false</LocalDebuggerAttach>
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)</LocalDebuggerWorkingDirectory>
+    <RemoteDebuggerCommand>regsvr32.exe</RemoteDebuggerCommand>
+    <RemoteDebuggerCommandArguments>C:\Users\HTCUser\Desktop\Shared\JAutoBatch\DispatchedUiAutomation.dll</RemoteDebuggerCommandArguments>
+    <RemoteDebuggerWorkingDirectory>c:\Windows\system32\</RemoteDebuggerWorkingDirectory>
+    <RemoteDebuggerServerName>10.15.19.71:4018</RemoteDebuggerServerName>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LocalDebuggerCommand>c:\Windows\sysWOW64\cscript.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsRemoteDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>$(OutDir)\JScriptConsole.js</LocalDebuggerCommandArguments>
+    <LocalDebuggerAttach>false</LocalDebuggerAttach>
+    <LocalDebuggerWorkingDirectory>$(ProjectDir)</LocalDebuggerWorkingDirectory>
+    <RemoteDebuggerCommand>c:\Windows\sysWOW64\cscript.exe</RemoteDebuggerCommand>
+    <RemoteDebuggerCommandArguments>"C:\Users\HTCUser\Desktop\Shared\JAutoBatch\HTC Robot.js"</RemoteDebuggerCommandArguments>
+    <RemoteDebuggerWorkingDirectory>C:\Users\HTCUser\Desktop\Shared\JAutoBatch\</RemoteDebuggerWorkingDirectory>
+    <RemoteDebuggerServerName>10.15.19.71:4018</RemoteDebuggerServerName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ShowAllFiles>true</ShowAllFiles>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{683073EC-54D1-4F68-93B0-5CDA80748751}</ProjectGuid>
+    <RootNamespace>DispatchedUIAutomation</RootNamespace>
+    <ProjectName>DispatchedUiAutomation</ProjectName>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TargetExt>.dll</TargetExt>
+    <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(Platform)\$(Configuration)\Intermediate\</IntDir>
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <TargetExt>.dll</TargetExt>
+    <LinkIncremental>true</LinkIncremental>
+    <IntDir>$(Platform)\$(Configuration)\Intermediate\</IntDir>
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+    <IntDir>$(OutDir)Intermediate\</IntDir>
+    <TargetExt>.dll</TargetExt>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <IntDir>$(OutDir)Intermediate\</IntDir>
+    <TargetExt>.dll</TargetExt>
+    <OutDir>$(Platform)\$(Configuration)\</OutDir>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
+      <CallingConvention>Cdecl</CallingConvention>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;CPPCOMSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CompileAs>Default</CompileAs>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <BrowseInformation>false</BrowseInformation>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <NoEntryPoint>false</NoEntryPoint>
+      <ShowProgress>LinkVerbose</ShowProgress>
+      <ModuleDefinitionFile>DispatchedUiAutomation.def</ModuleDefinitionFile>
+      <SubSystem>Windows</SubSystem>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;RpcRT4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TypeLibraryFile>
+      </TypeLibraryFile>
+      <ForceFileOutput>
+      </ForceFileOutput>
+    </Link>
+    <Midl>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <GenerateStublessProxies>
+      </GenerateStublessProxies>
+      <DllDataFileName>%(Filename)_d.c</DllDataFileName>
+      <TypeLibFormat>NewFormat</TypeLibFormat>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <MultiProcessorCompilation>
+      </MultiProcessorCompilation>
+      <CallingConvention>Cdecl</CallingConvention>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;CPPCOMSERVER_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <CompileAs>Default</CompileAs>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
+      <BrowseInformation>false</BrowseInformation>
+      <RuntimeTypeInfo>true</RuntimeTypeInfo>
+      <TreatWarningAsError>true</TreatWarningAsError>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <NoEntryPoint>false</NoEntryPoint>
+      <ShowProgress>LinkVerbose</ShowProgress>
+      <ModuleDefinitionFile>DispatchedUiAutomation.def</ModuleDefinitionFile>
+      <SubSystem>Windows</SubSystem>
+      <ImageHasSafeExceptionHandlers>false</ImageHasSafeExceptionHandlers>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;RpcRT4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <TypeLibraryFile>
+      </TypeLibraryFile>
+      <ForceFileOutput>
+      </ForceFileOutput>
+    </Link>
+    <Midl>
+      <AdditionalOptions>
+      </AdditionalOptions>
+      <GenerateStublessProxies>
+      </GenerateStublessProxies>
+      <DllDataFileName>%(Filename)_d.c</DllDataFileName>
+      <TypeLibFormat>NewFormat</TypeLibFormat>
+    </Midl>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="Structs\CPoint.h" />
+    <ClInclude Include="CMouseControl.h" />
+    <ClInclude Include="Conditions\CUiAutomationBoolCondition.h" />
+    <ClInclude Include="Conditions\CUiAutomationNotCondition.h" />
+    <ClInclude Include="Conditions\CuiAutomationOrCondition.h" />
+    <ClInclude Include="CUiAutomation.h" />
+    <ClInclude Include="Conditions\CuiAutomationAndCondition.h" />
+    <ClInclude Include="CUiAutomationElement.h" />
+    <ClInclude Include="CFDispatchedUiAutomation.h" />
+    <ClInclude Include="Conditions\CUiAutomationPropertyCondition.h" />
+    <ClInclude Include="CUiAutomationTreeWalker.h" />
+    <ClInclude Include="DispatchedUiAutomation_h.h" />
+    <ClInclude Include="Patterns\CDispatchedExpandCollapsePattern.h" />
+    <ClInclude Include="Patterns\CDispatchedGridItemPattern.h" />
+    <ClInclude Include="Patterns\CDispatchedGridPattern.h" />
+    <ClInclude Include="Patterns\CDispatchedInvokePattern.h" />
+    <ClInclude Include="Patterns\CDispatchedMultipleViewPattern.h" />
+    <ClInclude Include="Patterns\CDispatchedRangeValuePattern.h" />
+    <ClInclude Include="Patterns\CDispatchedScrollPattern.h" />
+    <ClInclude Include="Patterns\CDispatchedSelectionItemPattern.h" />
+    <ClInclude Include="Patterns\CDispatchedSelectionPattern.h" />
+    <ClInclude Include="Patterns\CDispatchedValuePattern.h" />
+    <ClInclude Include="Reg.h" />
+    <ClInclude Include="Structs\CRect.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Structs\CPoint.cpp" />
+    <ClCompile Include="CMouseControl.cpp" />
+    <ClCompile Include="Conditions\CuiAutomationAndCondition.cpp" />
+    <ClCompile Include="Conditions\CUiAutomationBoolCondition.cpp" />
+    <ClCompile Include="Conditions\CUiAutomationNotCondition.cpp" />
+    <ClCompile Include="Conditions\CuiAutomationOrCondition.cpp" />
+    <ClCompile Include="CUiAutomationElement.cpp" />
+    <ClCompile Include="CFDispatchedUiAutomation.cpp" />
+    <ClCompile Include="CUiAutomation.cpp" />
+    <ClCompile Include="Conditions\CUiAutomationPropertyCondition.cpp" />
+    <ClCompile Include="CUiAutomationTreeWalker.cpp" />
+    <ClCompile Include="DispatchedUiAutomation_d.c" />
+    <ClCompile Include="DispatchedUiAutomation_i.c" />
+    <ClCompile Include="DispatchedUiAutomation_p.c" />
+    <ClCompile Include="DllMain.cpp" />
+    <ClCompile Include="Patterns\CDispatchedExpandCollapsePattern.cpp" />
+    <ClCompile Include="Patterns\CDispatchedGridItemPattern.cpp" />
+    <ClCompile Include="Patterns\CDispatchedGridPattern.cpp" />
+    <ClCompile Include="Patterns\CDispatchedInvokePattern.cpp" />
+    <ClCompile Include="Patterns\CDispatchedMultipleViewPattern.cpp" />
+    <ClCompile Include="Patterns\CDispatchedRangeValuePattern.cpp" />
+    <ClCompile Include="Patterns\CDispatchedScrollPattern.cpp" />
+    <ClCompile Include="Patterns\CDispatchedSelectionItemPattern.cpp" />
+    <ClCompile Include="Patterns\CDispatchedSelectionPattern.cpp" />
+    <ClCompile Include="Patterns\CDispatchedValuePattern.cpp" />
+    <ClCompile Include="Reg.cpp" />
+    <ClCompile Include="Structs\CRect.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="DispatchedUiAutomation.def" />
+  </ItemGroup>
+  <ItemGroup>
+    <Midl Include="DispatchedUiAutomation.idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="DispatchedUiAutomation.rc">
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(IntDir)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(IntDir)</AdditionalIncludeDirectories>
+    </ResourceCompile>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

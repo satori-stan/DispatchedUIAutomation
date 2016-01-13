@@ -1,0 +1,1505 @@
+// -------------------------------------------------------------
+// DispatchedUiAutomation.idl
+//
+// IDispatch compatible version of Microsoft's UIAutomation Client 
+// interface and extensions meant to support scripting paradigms
+//
+// Copyright (c) 2015 Trabajos de Diseño e Ingeniería S.A. de C.V.
+//
+// This source is subject to the Microsoft Public License.
+// See http://www.microsoft.com/en-us/openness/resources/licenses.aspx#MPL.
+// All other rights reserved.
+//
+// THIS CODE AND INFORMATION IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND,
+// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED
+// WARRANTIES OF MERCHANTABILITY AND / OR FITNESS FOR A PARTICULAR PURPOSE.
+// -------------------------------------------------------------
+
+cpp_quote("// -------------------------------------------------------------")
+cpp_quote("// DispatchedUiAutomation.idl")
+cpp_quote("//")
+cpp_quote("// IDispatch compatible version of Microsoft's UIAutomation Client ")
+cpp_quote("// interface and extensions meant to support scripting paradigms")
+cpp_quote("//")
+cpp_quote("// Copyright (c) 2015 Trabajos de Diseño e Ingeniería S.A. de C.V.")
+cpp_quote("//")
+cpp_quote("// This source is subject to the Microsoft Public License.")
+cpp_quote("// See http://www.microsoft.com/en-us/openness/resources/licenses.aspx#MPL.")
+cpp_quote("// All other rights reserved.")
+cpp_quote("//")
+cpp_quote("// THIS CODE AND INFORMATION IS PROVIDED ""AS IS"" WITHOUT WARRANTY OF ANY KIND,")
+cpp_quote("// EITHER EXPRESSED OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE IMPLIED")
+cpp_quote("// WARRANTIES OF MERCHANTABILITY AND / OR FITNESS FOR A PARTICULAR PURPOSE.")
+cpp_quote("// -------------------------------------------------------------")
+
+midl_pragma warning(disable: 2362) // Allow large interface
+
+import "Unknwn.idl";
+import "UIAutomationClient.idl";
+
+enum PropertyIds
+{
+	RuntimeId =								30000,
+	BoundingRectangle =						30001,
+	ProcessId =								30002,
+	ControlType =							30003,
+	LocalizedControlType =					30004,
+	Name =									30005,
+	AcceleratorKey =						30006,
+	AccessKey =								30007,
+	HasKeyboardFocus =						30008,
+	IsKeyboardFocusable =					30009,
+	IsEnabled =								30010,
+	AutomationId =							30011,
+	ClassName =								30012,
+	HelpText =								30013,
+	ClickablePoint =						30014,
+	Culture =								30015,
+	IsControlElement =						30016,
+	IsContentElement =						30017,
+	LabeledBy =								30018,
+	IsPassword =							30019,
+	NativeWindowHandle =					30020,
+	ItemType =								30021,
+	IsOffscreen =							30022,
+	Orientation =							30023,
+	FrameworkId =							30024,
+	IsRequiredForForm =						30025,
+	ItemStatus =							30026,
+	IsDockPatternAvailable =				30027,
+	IsExpandCollapsePatternAvailable =		30028,
+	IsGridItemPatternAvailable =			30029,
+	IsGridPatternAvailable =				30030,
+	IsInvokePatternAvailable =				30031,
+	IsMultipleViewPatternAvailable =		30032,
+	IsRangeValuePatternAvailable =			30033,
+	IsScrollPatternAvailable =				30034,
+	IsScrollItemPatternAvailable =			30035,
+	IsSelectionItemPatternAvailable =		30036,
+	IsSelectionPatternAvailable =			30037,
+	IsTablePatternAvailable =				30038,
+	IsTableItemPatternAvailable =			30039,
+	IsTextPatternAvailable =				30040,
+	IsTogglePatternAvailable =				30041,
+	IsTransformPatternAvailable =			30042,
+	IsValuePatternAvailable =				30043,
+	IsWindowPatternAvailable =				30044,
+	ValueValue =							30045,
+	ValueIsReadOnly =						30046,
+	RangeValueValue =						30047,
+	RangeValueIsReadOnly =					30048,
+	RangeValueMinimum =						30049,
+	RangeValueMaximum =						30050,
+	RangeValueLargeChange =					30051,
+	RangeValueSmallChange =					30052,
+	ScrollHorizontalScrollPercent =			30053,
+	ScrollHorizontalViewSize =				30054,
+	ScrollVerticalScrollPercent =			30055,
+	ScrollVerticalViewSize =				30056,
+	ScrollHorizontallyScrollable =			30057,
+	ScrollVerticallyScrollable =			30058,
+	SelectionSelection =					30059,
+	SelectionCanSelectMultiple =			30060,
+	SelectionIsSelectionRequired =			30061,
+	GridRowCount =							30062,
+	GridColumnCount =						30063,
+	GridItemRow =							30064,
+	GridItemColumn =						30065,
+	GridItemRowSpan =						30066,
+	GridItemColumnSpan =					30067,
+	GridItemContainingGrid =				30068,
+	DockDockPosition =						30069,
+	ExpandCollapseExpandCollapseState =		30070,
+	MultipleViewCurrentView =				30071,
+	MultipleViewSupportedViews =			30072,
+	WindowCanMaximize =						30073,
+	WindowCanMinimize =						30074,
+	WindowWindowVisualState =				30075,
+	WindowWindowInteractionState =			30076,
+	WindowIsModal =							30077,
+	WindowIsTopmost =						30078,
+	SelectionItemIsSelected =				30079,
+	SelectionItemSelectionContainer =		30080,
+	TableRowHeaders =						30081,
+	TableColumnHeaders =					30082,
+	TableRowOrColumnMajor =					30083,
+	TableItemRowHeaderItems =				30084,
+	TableItemColumnHeaderItems =			30085,
+	ToggleToggleState =						30086,
+	TransformCanMove =						30087,
+	TransformCanResize =					30088,
+	TransformCanRotate =					30089,
+	IsLegacyIAccessiblePatternAvailable =	30090,
+	LegacyIAccessibleChildId =				30091,
+	LegacyIAccessibleName =					30092,
+	LegacyIAccessibleValue =				30093,
+	LegacyIAccessibleDescription =			30094,
+	LegacyIAccessibleRole =					30095,
+	LegacyIAccessibleState =				30096,
+	LegacyIAccessibleHelp =					30097,
+	LegacyIAccessibleKeyboardShortcut =		30098,
+	LegacyIAccessibleSelection =			30099,
+	LegacyIAccessibleDefaultAction =		30100,
+	AriaRole =								30101,
+	AriaProperties =						30102,
+	IsDataValidForForm =					30103,
+	ControllerFor =							30104,
+	DescribedBy =							30105,
+	FlowsTo =								30106,
+	ProviderDescription =					30107,
+	IsItemContainerPatternAvailable =		30108,
+	IsVirtualizedItemPatternAvailable =		30109,
+	IsSynchronizedInputPatternAvailable =	30110,
+	OptimizeForVisualContent =				30111,
+	IsObjectModelPatternAvailable =			30112,
+	AnnotationAnnotationTypeId =			30113,
+	AnnotationAnnotationTypeName =			30114,
+	AnnotationAuthor =						30115,
+	AnnotationDateTime =					30116,
+	AnnotationTarget =						30117,
+	IsAnnotationPatternAvailable =			30118,
+	IsTextPattern2Available =				30119,
+	StylesStyleId =							30120,
+	StylesStyleName =						30121,
+	StylesFillColor =						30122,
+	StylesFillPatternStyle =				30123,
+	StylesShape =							30124,
+	StylesFillPatternColor =				30125,
+	StylesExtendedProperties =				30126,
+	IsStylesPatternAvailable =				30127,
+	IsSpreadsheetPatternAvailable =			30128,
+	SpreadsheetItemFormula =				30129,
+	SpreadsheetItemAnnotationObjects =		30130,
+	SpreadsheetItemAnnotationTypes =		30131,
+	IsSpreadsheetItemPatternAvailable =		30132,
+	Transform2CanZoom =						30133,
+	IsTransformPattern2Available =			30134,
+	LiveSetting =							30135,
+	IsTextChildPatternAvailable =			30136,
+	IsDragPatternAvailable =				30137,
+	DragIsGrabbed =							30138,
+	DragDropEffect =						30139,
+	DragDropEffects =						30140,
+	IsDropTargetPatternAvailable =			30141,
+	DropTargetDropTargetEffect =			30142,
+	DropTargetDropTargetEffects =			30143,
+	DragGrabbedItems =						30144,
+	Transform2ZoomLevel =					30145,
+	Transform2ZoomMinimum =					30146,
+	Transform2ZoomMaximum =					30147,
+	FlowsFrom =								30148,
+	IsTextEditPatternAvailable =			30149,
+	IsPeripheral =							30150
+};
+
+interface IDispatchedUiAutomationCondition;
+interface IDispatchedUiAutomationBoolCondition;
+interface IDispatchedUiAutomationPropertyCondition;
+interface IDispatchedUiAutomationAndCondition;
+interface IDispatchedUiAutomationOrCondition;
+interface IDispatchedUiAutomationNotCondition;
+
+interface IDispatchedMouseControl;
+
+//interface IDispatchedGridPattern;
+
+interface IDispatchedUiAutomationTreeWalker;
+
+interface IDispatchedUiAutomationElement;
+
+[
+	object,
+	uuid(4C8282BC-0BD1-41FA-B649-531A343842E0),
+	dual,
+	helpstring("IDispatchedUiAutomation Interface"),
+	pointer_default(unique)
+]
+interface IDispatchedUiAutomation : IDispatch
+{
+#pragma region IUIAutomation
+	// Comparisons
+	[id(1), helpstring("method CompareElements")]
+	HRESULT CompareElements(
+		[in] IDispatchedUiAutomationElement * el1,
+		[in] IDispatchedUiAutomationElement * el2,
+		[out, retval] BOOL * areSame);
+
+	[id(2), helpstring("method CompareRuntimeIds")]
+	HRESULT CompareRuntimeIds(
+		[in] SAFEARRAY(int) runtimeId1,
+		[in] SAFEARRAY(int) runtimeId2,
+		[out, retval] BOOL * areSame);
+
+	// Automation Element fetching
+	[id(3), helpstring("Retrieves the UI Automation element that represents the desktop")]
+	HRESULT GetRootElement(
+		//[out, retval] IUIAutomationElement ** root);
+		[out, retval] IDispatchedUiAutomationElement ** root);
+
+	// Replaces ElementFromHandle, which is not very useful for Automation
+	[id(4), helpstring("method ElementFromWindow allows using a Window Name")]
+	HRESULT ElementFromHandle(
+		[in] ULONG hwnd,
+		[out, retval] IDispatchedUiAutomationElement ** element);
+	/*
+	HRESULT ElementFromWindow(
+		[in] BSTR wName,
+		[out, retval] IDispatchedUiAutomationElement ** element);
+	*/
+
+	[id(5), helpstring("method ElementFromPoint")]
+	HRESULT ElementFromPoint(
+		[in] POINT pt,
+		[out, retval] IUIAutomationElement ** element);
+
+	[id(6), helpstring("method GetFocusedElement")]
+	HRESULT GetFocusedElement(
+		//[out, retval] IUIAutomationElement ** element);
+		[out, retval] IDispatchedUiAutomationElement ** element);
+
+	[id(7), helpstring("method GetRootElementBuildCache")]
+	HRESULT GetRootElementBuildCache(
+		[in] IUIAutomationCacheRequest * cacheRequest,
+		[out, retval] IUIAutomationElement ** root);
+
+	[id(8), helpstring("method ElementFromHandleBuildCache"), local]
+	HRESULT ElementFromHandleBuildCache(
+		[in] UIA_HWND hwnd,
+		[in] IUIAutomationCacheRequest * cacheRequest,
+		[out, retval] IUIAutomationElement ** element);
+
+	[id(9), helpstring("method ElementFromPointBuildCache")]
+	HRESULT ElementFromPointBuildCache(
+		[in] POINT pt,
+		[in] IUIAutomationCacheRequest * cacheRequest,
+		[out, retval] IUIAutomationElement ** element);
+
+	[id(10), helpstring("method GetFocusedElementBuildCache")]
+	HRESULT GetFocusedElementBuildCache(
+		[in] IUIAutomationCacheRequest * cacheRequest,
+		[out, retval] IUIAutomationElement ** element);
+
+	// Tree Walker Creation
+	[id(11), helpstring("method CreateTreeWalker")]
+	HRESULT CreateTreeWalker(
+		[in] IDispatchedUiAutomationCondition * pCondition,
+		[out, retval] IDispatchedUiAutomationTreeWalker ** walker);
+
+	[propget, id(12), helpstring("property ControlViewWalker")]
+	HRESULT ControlViewWalker(
+		[out, retval] IDispatchedUiAutomationTreeWalker ** walker);
+
+	[propget, id(13), helpstring("property ContentViewWalker")]
+	HRESULT ContentViewWalker(
+		[out, retval] IDispatchedUiAutomationTreeWalker ** walker);
+
+	[propget, id(14), helpstring("property RawViewWalker")]
+	HRESULT RawViewWalker(
+		[out, retval] IDispatchedUiAutomationTreeWalker ** walker);
+
+	[propget, id(15), helpstring("property RawViewCondition")]
+	HRESULT RawViewCondition(
+		[out, retval] IDispatchedUiAutomationCondition ** condition);
+
+	[propget, id(16), helpstring("property ControlViewCondition")]
+	HRESULT ControlViewCondition(
+		[out, retval] IDispatchedUiAutomationCondition ** condition);
+
+	[propget, id(17), helpstring("property ContentViewCondition")]
+	HRESULT ContentViewCondition(
+		[out, retval] IDispatchedUiAutomationCondition ** condition);
+
+
+	// Cache Request Creation
+	[id(18), helpstring("method CreateCacheRequest")]
+	HRESULT CreateCacheRequest(
+		[out, retval] IUIAutomationCacheRequest ** cacheRequest);
+
+
+	// Condition Creation
+	[id(19), helpstring("method CreateTrueCondition")]
+	HRESULT CreateTrueCondition(
+		[out, retval] IDispatchedUiAutomationBoolCondition ** newCondition);
+
+	[id(20), helpstring("method CreateFalseCondition")]
+	HRESULT CreateFalseCondition(
+		[out, retval] IDispatchedUiAutomationBoolCondition ** newCondition);
+
+	[id(21), helpstring("method CreatePropertyCondition")]
+	HRESULT CreatePropertyCondition(
+		[in] PROPERTYID propertyId,
+		[in] VARIANT value,
+		//[out, retval] IUIAutomationCondition ** newCondition);
+		[out, retval] IDispatchedUiAutomationCondition ** newCondition);
+
+	[id(22), helpstring("method CreatePropertyConditionEx")]
+	HRESULT CreatePropertyConditionEx(
+		[in] PROPERTYID propertyId,
+		[in] VARIANT value,
+		[in] enum PropertyConditionFlags flags,
+		[out, retval] IDispatchedUiAutomationCondition ** newCondition);
+
+	[id(23), helpstring("method CreateAndCondition")]
+	HRESULT CreateAndCondition(
+		[in] IDispatchedUiAutomationCondition * condition1,
+		[in] IDispatchedUiAutomationCondition * condition2,
+		[out, retval] IDispatchedUiAutomationCondition ** newCondition);
+
+	[id(24), helpstring("method CreateAndConditionFromArray")]
+	HRESULT CreateAndConditionFromArray(
+		[in] SAFEARRAY(IDispatchedUiAutomationCondition*) conditions, // Added pointer symbol
+		[out, retval] IDispatchedUiAutomationCondition ** newCondition);
+	/*
+	[id(25), helpstring("method CreateAndConditionFromNativeArray")]
+	HRESULT CreateAndConditionFromNativeArray(
+		[in, size_is(conditionCount)] IUIAutomationCondition ** conditions,
+		[in] int conditionCount,
+		[out, retval] IUIAutomationCondition ** newCondition);
+	*/
+	[id(25), helpstring("method CreateOrCondition")]
+	HRESULT CreateOrCondition(
+		[in] IDispatchedUiAutomationCondition * condition1,
+		[in] IDispatchedUiAutomationCondition * condition2,
+		[out, retval] IDispatchedUiAutomationCondition ** newCondition);
+
+	[id(26), helpstring("method CreateOrConditionFromArray")]
+	HRESULT CreateOrConditionFromArray(
+		[in] SAFEARRAY(IDispatchedUiAutomationCondition*) conditions,
+		[out, retval] IDispatchedUiAutomationCondition ** newCondition);
+	/*
+	[id(28), helpstring("method CreateOrConditionFromNativeArray")]
+	HRESULT CreateOrConditionFromNativeArray(
+		[in, size_is(conditionCount)] IUIAutomationCondition ** conditions,
+		[in] int conditionCount,
+		[out, retval] IUIAutomationCondition ** newCondition);
+	*/
+	[id(27), helpstring("method CreateNotCondition")]
+	HRESULT CreateNotCondition(
+		[in] IDispatchedUiAutomationCondition * condition,
+		[out, retval] IDispatchedUiAutomationCondition ** newCondition);
+
+	// Event Registration and Removal
+	[id(28), helpstring("method AddAutomationEventHandler")]
+	HRESULT AddAutomationEventHandler(
+		[in] EVENTID eventId,
+		[in] IUIAutomationElement * element,
+		[in] enum TreeScope scope,
+		[in] IUIAutomationCacheRequest * cacheRequest,
+		[in] IUIAutomationEventHandler * handler);
+
+	[id(29), helpstring("method RemoveAutomationEventHandler")]
+	HRESULT RemoveAutomationEventHandler(
+		[in] EVENTID eventId,
+		[in] IUIAutomationElement * element,
+		[in] IUIAutomationEventHandler * handler);
+	/*
+	[id(30), helpstring("method AddPropertyChangedEventHandlerNativeArray")]
+	HRESULT AddPropertyChangedEventHandlerNativeArray(
+		[in] IUIAutomationElement * element,
+		[in] enum TreeScope scope,
+		[in] IUIAutomationCacheRequest * cacheRequest,
+		[in] IUIAutomationPropertyChangedEventHandler * handler,
+		[in, size_is(propertyCount)] PROPERTYID * propertyArray,
+		[in] int propertyCount);
+	*/
+	[id(30), helpstring("method AddPropertyChangedEventHandler")]
+	HRESULT AddPropertyChangedEventHandler(
+		[in] IUIAutomationElement * element,
+		[in] enum TreeScope scope,
+		[in] IUIAutomationCacheRequest * cacheRequest,
+		[in] IUIAutomationPropertyChangedEventHandler * handler,
+		[in] SAFEARRAY(PROPERTYID) propertyArray);
+
+	[id(31), helpstring("method RemovePropertyChangedEventHandler")]
+	HRESULT RemovePropertyChangedEventHandler(
+		[in] IUIAutomationElement * element,
+		[in] IUIAutomationPropertyChangedEventHandler * handler);
+
+	[id(32), helpstring("method AddStructureChangedEventHandler")]
+	HRESULT AddStructureChangedEventHandler(
+		[in] IUIAutomationElement * element,
+		[in] enum TreeScope scope,
+		[in] IUIAutomationCacheRequest * cacheRequest,
+		[in] IUIAutomationStructureChangedEventHandler * handler);
+
+	[id(33), helpstring("method RemoveStructureChangedEventHandler")]
+	HRESULT RemoveStructureChangedEventHandler(
+		[in] IUIAutomationElement * element,
+		[in] IUIAutomationStructureChangedEventHandler * handler);
+
+	[id(34), helpstring("method AddFocusChangedEventHandler")]
+	HRESULT AddFocusChangedEventHandler(
+		[in] IUIAutomationCacheRequest * cacheRequest,
+		[in] IUIAutomationFocusChangedEventHandler * handler);
+
+	[id(35), helpstring("method RemoveFocusChangedEventHandler")]
+	HRESULT RemoveFocusChangedEventHandler(
+		[in] IUIAutomationFocusChangedEventHandler * handler);
+
+	[id(36), helpstring("method RemoveAllEventHandlers")]
+	HRESULT RemoveAllEventHandlers();
+
+	// Conversion helpers
+	/*
+	[id(40), helpstring("method IntNativeArrayToSafeArray")]
+	HRESULT IntNativeArrayToSafeArray(
+		[in, size_is(arrayCount)] int * array,
+		[in] int arrayCount,
+		[out, retval] SAFEARRAY(int) * safeArray);
+
+	[id(41), helpstring("method IntSafeArrayToNativeArray")]
+	HRESULT IntSafeArrayToNativeArray(
+		[in] SAFEARRAY(int) intArray,
+		[out, size_is(, *arrayCount)] int ** array,
+		[out, retval] int * arrayCount);
+	*/
+	[id(37), helpstring("method RectToVariant")]
+	HRESULT RectToVariant(
+		[in] RECT rc,
+		[out, retval] VARIANT * var);
+
+	[id(38), helpstring("method VariantToRect")]
+	HRESULT VariantToRect(
+		[in] VARIANT var,
+		[out, retval] RECT * rc);
+	/*
+	[id(39), helpstring("method SafeArrayToRectNativeArray")]
+	HRESULT SafeArrayToRectNativeArray(
+		[in] SAFEARRAY(double) rects,
+		[out, size_is(, *rectArrayCount)] RECT ** rectArray,
+		[out, retval] int * rectArrayCount);
+	*/
+	// Proxy registration
+	[id(39), helpstring("method CreateProxyFactoryEntry")]
+	HRESULT CreateProxyFactoryEntry(
+		[in] IUIAutomationProxyFactory *factory,
+		[out, retval] IUIAutomationProxyFactoryEntry **factoryEntry);
+
+	[propget, id(40), helpstring("property ProxyFactoryMapping")]
+	HRESULT ProxyFactoryMapping(
+		[out, retval] IUIAutomationProxyFactoryMapping **factoryMapping);
+
+	// Name Lookup
+	[id(41), helpstring("method GetPropertyProgrammaticName")]
+	HRESULT GetPropertyProgrammaticName(
+		[in] PROPERTYID property,
+		[out, retval] BSTR * name);
+
+	[id(42), helpstring("method GetPatternProgrammaticName")]
+	HRESULT GetPatternProgrammaticName(
+		[in] PATTERNID pattern,
+		[out, retval] BSTR * name);
+
+	// Return potentially supported patterns. Note that object may not actually
+	// support the pattern when asked for it later.
+	[id(43), helpstring("method PollForPotentialSupportedPatterns")]
+	HRESULT PollForPotentialSupportedPatterns(
+		[in] IUIAutomationElement * pElement,
+		[out] SAFEARRAY(int) * patternIds,
+		[out] SAFEARRAY(BSTR) * patternNames);
+
+	// Return potentially supported properties. Note that object may not actually
+	// support all properties when asked.
+	[id(44), helpstring("method PollForPotentialSupportedProperties")]
+	HRESULT PollForPotentialSupportedProperties(
+		[in] IUIAutomationElement * pElement,
+		[out] SAFEARRAY(int) * propertyIds,
+		[out] SAFEARRAY(BSTR) * propertyNames);
+
+	// Check whether this variant (returned from GetPropertyValue) is the NotSupported item.
+	[id(45), helpstring("method CheckNotSupported")]
+	HRESULT CheckNotSupported(
+		[in] VARIANT value,
+		[out, retval] BOOL * isNotSupported);
+
+	// Get the "Not Supported" object
+	[propget, id(46), helpstring("property ReservedNotSupportedValue")]
+	HRESULT ReservedNotSupportedValue(
+		[out, retval] IUnknown **notSupportedValue);
+
+	// Get the "Mixed Attribute" object
+	[propget, id(47), helpstring("property ReservedMixedAttributeValue")]
+	HRESULT ReservedMixedAttributeValue(
+		[out, retval] IUnknown **mixedAttributeValue);
+
+	// IAccessible interop
+	[id(48), helpstring("method ElementFromIAccessible")]
+	HRESULT ElementFromIAccessible(
+		[in] IAccessible * accessible,
+		[in] int childId,
+		[out, retval] IUIAutomationElement ** element);
+
+	[id(49), helpstring("method ElementFromIAccessibleBuildCache")]
+	HRESULT ElementFromIAccessibleBuildCache(
+		[in] IAccessible * accessible,
+		[in] int childId,
+		[in] IUIAutomationCacheRequest * cacheRequest,
+		[out, retval] IUIAutomationElement ** element);
+
+#pragma endregion  /* IUIAutomation */
+
+	[id(50), propget, helpstring("property Mouse")]
+	HRESULT Mouse(
+		[out, retval] IDispatchedMouseControl ** controller);
+
+	/*
+	[id(51), propget, helpstring("property Nothing")]
+	HRESULT Nothing(
+		[out, retval] VARIANT * retVal);
+	*/
+};
+
+
+[
+	uuid(D7F08CAA-33EA-41E2-B77A-E66059A04AAF),
+	version(1.0),
+	helpstring("DispatchedUiAutomation 1.0 Type Library")
+]
+library DispatchedUiAutomation
+{
+	importlib("stdole32.tlb");
+
+	[
+		local, object,
+		uuid(BEF2FEBE-BB51-478A-A172-F5A908C10CF7),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("A structure to handle point info"),
+		pointer_default(unique)
+	]
+	interface IDispPoint : IDispatch
+	{
+		[propget, helpstring("property x")]
+		HRESULT x(
+			[out, retval] LONG * retVal);
+		[propget, helpstring("property y")]
+		HRESULT y(
+			[out, retval] LONG * retVal);
+
+		[helpstring("method toString")]
+		HRESULT toString(
+			[out, retval] BSTR * retVal);
+	}
+	
+	[
+		local, object,
+		uuid(8E54D30A-B10E-4BC0-A6F0-67FB6898480A),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("A structure to handle bounding rectangle info"),
+		pointer_default(unique)
+	]
+	interface IDispRect : IDispatch
+	{
+		[propget, helpstring("property left")]
+		HRESULT left(
+			[out, retval] LONG * retVal); 
+
+		[propget, helpstring("property top")]
+		HRESULT top(
+			[out, retval] LONG * retVal);
+
+		[propget, helpstring("property right")]
+		HRESULT right(
+			[out, retval] LONG * retVal);
+
+		[propget, helpstring("property bottom")]
+		HRESULT bottom(
+			[out, retval] LONG * retVal);
+
+		[helpstring("method toPoint")]
+		HRESULT toPoint(
+			[out, retval] IDispPoint ** point );
+
+		[helpstring("method toString")]
+		HRESULT toString(
+			[out, retval] BSTR * retVal);
+	}
+
+
+#pragma region Conditions
+	[
+		object,
+		uuid(F104A127-154E-45CD-A45A-0D6489F43769),
+		dual,
+		helpstring("IDispatchedUiAutomationCondition Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedUiAutomationCondition : IDispatch 
+	{
+		[hidden, helpstring("method Base")]
+		HRESULT GetBase(
+			[out, retval] IUIAutomationCondition ** condition);
+
+		[hidden, helpstring("method BaseType")]
+		HRESULT GetBaseType(
+			[out, retval] IID * idRef);
+	};
+
+	[
+		object,
+		uuid(91EEAE28-C692-42CB-9C2D-3A4FC773EF11),
+		dual,
+		helpstring("IDispatchedUIAutomationBoolCondition Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedUiAutomationBoolCondition : IDispatchedUiAutomationCondition
+	{
+		[propget, id(1), helpstring("property BooleanValue")]
+		HRESULT BooleanValue(
+			[out, retval] BOOL * boolVal);
+	};
+
+	[
+		object,
+		uuid(01FC392E-43EB-4C1F-8DC6-A1F8387736DB),
+		dual,
+		helpstring("IDispatchedUiAutomationPropertyCondition Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedUiAutomationPropertyCondition : IDispatchedUiAutomationCondition
+	{
+		[propget, id(1), helpstring("property PropertyId")]
+		HRESULT PropertyId(
+			[out, retval] PROPERTYID * propertyId);
+
+		[propget, id(2), helpstring("property PropertyValue")]
+		HRESULT PropertyValue(
+			[out, retval] VARIANT * propertyValue);
+
+		[propget, id(3), helpstring("property PropertyConditionFlags")]
+		HRESULT PropertyConditionFlags(
+			[out, retval] enum PropertyConditionFlags * flags);
+	}
+
+	[
+		object,
+		uuid(1205365E-91EE-446C-B0F2-A307FD9326A1),
+		dual,
+		helpstring("IDispatchedUiAutomationAndCondition Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedUiAutomationAndCondition : IDispatchedUiAutomationCondition
+	{
+		[propget, id(1), helpstring("property ChildCount")]
+		HRESULT ChildCount(
+			[out, retval] int * childCount);
+		/*
+		// Native arrays can't be used in Automation
+		[id(2), helpstring("method GetChildrenAsNativeArray")]
+		HRESULT GetChildrenAsNativeArray(
+			[out, size_is(, *childArrayCount)] IUIAutomationCondition *** childArray,
+			[out] int * childArrayCount);
+		*/
+		[id(2), helpstring("method GetChildren")]
+		HRESULT GetChildren(
+			[out, retval] SAFEARRAY(VARIANT) * childArray);
+	}
+
+	[
+		object,
+		uuid(11B8A2E0-B891-4893-AF9D-BBBEE774E247),
+		dual,
+		helpstring("IDispatchedUiAutomationOrCondition Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedUiAutomationOrCondition : IDispatchedUiAutomationCondition
+	{
+		[propget, id(1), helpstring("property ChildCount")]
+		HRESULT ChildCount(
+			[out, retval] int * childCount);
+		/*
+		[id(2), helpstring("method GetChildrenAsNativeArray")]
+		HRESULT GetChildrenAsNativeArray(
+			[out, size_is(, *childArrayCount)] IUIAutomationCondition *** childArray,
+			[out] int * childArrayCount);
+		*/
+		[id(2), helpstring("method GetChildren")]
+		HRESULT GetChildren(
+			[out, retval] SAFEARRAY(VARIANT) * childArray);
+	}
+
+	[
+		object,
+		uuid(87DCE25B-E388-4FB6-9CF5-A7793CAB6F9A),
+		dual,
+		helpstring("IDispatchedUiAutomationOrCondition Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedUiAutomationNotCondition : IDispatchedUiAutomationCondition
+	{
+		[id(1), helpstring("method GetChild")]
+		HRESULT GetChild(
+			[out, retval] IDispatchedUiAutomationCondition ** condition);
+	}
+
+#pragma endregion /* Conditions */
+
+#pragma region Patterns
+
+	[
+		local, object,
+		uuid(F577992F-D7FB-497C-8523-84ECC06C345A),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("IDispatchedInvokePattern Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedInvokePattern : IDispatch
+	{
+		[id(1), helpstring("method Invoke")]
+		HRESULT DoInvoke();
+	}
+
+	[
+		local, object,
+		uuid(41173706-F86E-4DA1-A94D-15D11B59DB20),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("IDispatchedSelectionPattern Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedSelectionPattern : IDispatch
+	{
+		[helpstring("method GetCurrentSelection")]
+		HRESULT GetCurrentSelection(
+			[out, retval] SAFEARRAY(VARIANT) * retVal); //IUIAutomationElementArray ** retVal);
+
+		[helpstring("method GetCachedSelection")]
+		HRESULT GetCachedSelection(
+			[out, retval] SAFEARRAY(VARIANT) * retVal); //IUIAutomationElementArray ** retVal);
+
+		[propget, helpstring("property CurrentCanSelectMultiple")]
+		HRESULT CurrentCanSelectMultiple(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CurrentIsSelectionRequired")]
+		HRESULT CurrentIsSelectionRequired(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CachedCanSelectMultiple")]
+		HRESULT CachedCanSelectMultiple(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CachedIsSelectionRequired")]
+		HRESULT CachedIsSelectionRequired(
+			[out, retval] BOOL * retVal);
+	}
+
+	[
+		local, object,
+		uuid(212EEC1D-B474-4AFE-9ED2-A76B138D521E),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("IDispatchedValuePattern Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedValuePattern : IDispatch
+	{
+		[helpstring("method SetValue")]
+		HRESULT SetValue(
+			[in] BSTR val);
+
+		[propget, helpstring("property CurrentValue")]
+		HRESULT CurrentValue(
+			[out, retval] BSTR * retVal);
+
+		[propget, helpstring("property CurrentIsReadOnly")]
+		HRESULT CurrentIsReadOnly(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CachedValue")]
+		HRESULT CachedValue(
+			[out, retval] BSTR * retVal);
+
+		[propget, helpstring("property CachedIsReadOnly")]
+		HRESULT CachedIsReadOnly(
+			[out, retval] BOOL * retVal);
+	}
+
+	[
+		local, object,
+		uuid(D1DD52CF-F769-4184-8B50-06AD997D3F52),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("IDispatchedRangeValuePattern Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedRangeValuePattern : IDispatch // IUIAutomationRangeValuePattern
+	{
+		[helpstring("method SetValue")]
+		HRESULT SetValue(
+			[in] double val);
+
+		[propget, helpstring("property CurrentValue")]
+		HRESULT CurrentValue(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CurrentIsReadOnly")]
+		HRESULT CurrentIsReadOnly(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CurrentMaximum")]
+		HRESULT CurrentMaximum(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CurrentMinimum")]
+		HRESULT CurrentMinimum(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CurrentLargeChange")]
+		HRESULT CurrentLargeChange(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CurrentSmallChange")]
+		HRESULT CurrentSmallChange(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CachedValue")]
+		HRESULT CachedValue(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CachedIsReadOnly")]
+		HRESULT CachedIsReadOnly(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CachedMaximum")]
+		HRESULT CachedMaximum(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CachedMinimum")]
+		HRESULT CachedMinimum(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CachedLargeChange")]
+		HRESULT CachedLargeChange(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CachedSmallChange")]
+		HRESULT CachedSmallChange(
+			[out, retval] double * retVal);
+	}
+
+	[
+		local, object,
+		uuid(2BBE74D4-9472-4268-9E49-C299AA8D0AB1),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("IDispatchedScrollPattern Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedScrollPattern : IDispatch // IUIAutomationScrollPattern
+	{
+		[helpstring("method Scroll")]
+		HRESULT Scroll(
+			[in] enum ScrollAmount horizontalAmount,
+			[in] enum ScrollAmount verticalAmount);
+
+		[helpstring("method SetScrollPercent")]
+		HRESULT SetScrollPercent(
+			[in] double horizontalPercent,
+			[in] double verticalPercent);
+
+		[propget, helpstring("property CurrentHorizontalScrollPercent")]
+		HRESULT CurrentHorizontalScrollPercent(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CurrentVerticalScrollPercent")]
+		HRESULT CurrentVerticalScrollPercent(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CurrentHorizontalViewSize")]
+		HRESULT CurrentHorizontalViewSize(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CurrentVerticalViewSize")]
+		HRESULT CurrentVerticalViewSize(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CurrentHorizontallyScrollable")]
+		HRESULT CurrentHorizontallyScrollable(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CurrentVerticallyScrollable")]
+		HRESULT CurrentVerticallyScrollable(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CachedHorizontalScrollPercent")]
+		HRESULT CachedHorizontalScrollPercent(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CachedVerticalScrollPercent")]
+		HRESULT CachedVerticalScrollPercent(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CachedHorizontalViewSize")]
+		HRESULT CachedHorizontalViewSize(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CachedVerticalViewSize")]
+		HRESULT CachedVerticalViewSize(
+			[out, retval] double * retVal);
+
+		[propget, helpstring("property CachedHorizontallyScrollable")]
+		HRESULT CachedHorizontallyScrollable(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CachedVerticallyScrollable")]
+		HRESULT CachedVerticallyScrollable(
+			[out, retval] BOOL * retVal);
+	}
+
+	[
+		local, object,
+		uuid(6FEA5B98-A8F6-4DDE-B1ED-70BD6721254D),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("IDispatchedExpandCollapsePattern Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedExpandCollapsePattern : IDispatch
+	{
+		[helpstring("method Expand")]
+		HRESULT Expand();
+
+		[helpstring("method Collapse")]
+		HRESULT Collapse();
+
+		[propget, helpstring("property CurrentExpandCollapseState")]
+		HRESULT CurrentExpandCollapseState(
+			[out, retval] enum ExpandCollapseState * retVal);
+
+		[propget, helpstring("property CachedExpandCollapseState")]
+		HRESULT CachedExpandCollapseState(
+			[out, retval] enum ExpandCollapseState * retVal);
+	}
+
+	[
+		local, object,
+		uuid(E6E5BF29-3AA9-4E8F-92F3-127CE24BF5B2),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("IDispatchedGridPattern Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedGridPattern : IDispatch
+	{
+		[helpstring("method GetItem")]
+		HRESULT GetItem(
+			[in] int row,
+			[in] int column,
+			[out, retval] IDispatchedUiAutomationElement ** element);
+
+		[propget, helpstring("property CurrentRowCount")]
+		HRESULT CurrentRowCount(
+			[out, retval] int * retVal);
+
+		[propget, helpstring("property CurrentColumnCount")]
+		HRESULT CurrentColumnCount(
+			[out, retval] int * retVal);
+
+		[propget, helpstring("property CachedRowCount")]
+		HRESULT CachedRowCount(
+			[out, retval] int * retVal);
+
+		[propget, helpstring("property CachedColumnCount")]
+		HRESULT CachedColumnCount(
+			[out, retval] int * retVal);
+	}
+
+	[
+		local, object,
+		uuid(B70CEE66-A775-4EB7-A8C3-D996771952CE),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("IDispatchedGridItemPattern Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedGridItemPattern : IDispatch // IUIAutomationGridItemPattern
+	{
+		[propget, helpstring("property CurrentContainingGrid")]
+		HRESULT CurrentContainingGrid(
+			[out, retval] IDispatchedUiAutomationElement ** retVal);
+
+		[propget, helpstring("property CurrentRow")]
+		HRESULT CurrentRow(
+			[out, retval] int * retVal);
+
+		[propget, helpstring("property CurrentColumn")]
+		HRESULT CurrentColumn(
+			[out, retval] int * retVal);
+
+		[propget, helpstring("property CurrentRowSpan")]
+		HRESULT CurrentRowSpan(
+			[out, retval] int * retVal);
+
+		[propget, helpstring("property CurrentColumnSpan")]
+		HRESULT CurrentColumnSpan(
+			[out, retval] int * retVal);
+
+		[propget, helpstring("property CachedContainingGrid")]
+		HRESULT CachedContainingGrid(
+			[out, retval] IDispatchedUiAutomationElement ** retVal);
+
+		[propget, helpstring("property CachedRow")]
+		HRESULT CachedRow(
+			[out, retval] int * retVal);
+
+		[propget, helpstring("property CachedColumn")]
+		HRESULT CachedColumn(
+			[out, retval] int * retVal);
+
+		[propget, helpstring("property CachedRowSpan")]
+		HRESULT CachedRowSpan(
+			[out, retval] int * retVal);
+
+		[propget, helpstring("property CachedColumnSpan")]
+		HRESULT CachedColumnSpan(
+			[out, retval] int * retVal);
+	}
+
+	[
+		local, object,
+		uuid(CDB5180D-0AB1-4A5C-A2A0-A8B958D7F182),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("IDispatchedMultipleViewPattern Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedMultipleViewPattern : IDispatch // IUIAutomationMultipleViewPattern
+	{
+		[helpstring("method GetViewName")]
+		HRESULT GetViewName(
+			[in] int view,
+			[out, retval] BSTR * name);
+
+		[helpstring("method SetCurrentView")]
+		HRESULT SetCurrentView(
+			[in] int view);
+
+		[helpstring("method GetCurrentSupportedViews")]
+		HRESULT GetCurrentSupportedViews(
+			[out, retval] SAFEARRAY(int) * retVal);
+
+		[helpstring("method GetCachedSupportedViews")]
+		HRESULT GetCachedSupportedViews(
+			[out, retval] SAFEARRAY(int) * retVal);
+
+		[propget, helpstring("property CurrentCurrentView")]
+		HRESULT CurrentCurrentView(
+			[out, retval] int * retVal);
+
+		[propget, helpstring("property CachedCurrentView")]
+		HRESULT CachedCurrentView(
+			[out, retval] int * retVal);
+
+	}
+
+	[
+		local, object,
+		uuid(65362205-E1C8-41F0-B46A-D4C4244F2B2B),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("IDispatchedSelectionItemPattern Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedSelectionItemPattern : IDispatch
+	{
+		[helpstring("method Select")]
+		HRESULT Select();
+
+		[helpstring("method AddToSelection")]
+		HRESULT AddToSelection();
+
+		[helpstring("method RemoveFromSelection")]
+		HRESULT RemoveFromSelection();
+
+		[propget, helpstring("property CurrentIsSelected")]
+		HRESULT CurrentIsSelected(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CurrentSelectionContainer")]
+		HRESULT CurrentSelectionContainer(
+			[out, retval] IDispatchedUiAutomationElement ** retVal);
+
+		[propget, helpstring("property CachedIsSelected")]
+		HRESULT CachedIsSelected(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CachedSelectionContainer")]
+		HRESULT CachedSelectionContainer(
+			[out, retval] IDispatchedUiAutomationElement ** retVal);
+	}
+
+	/*
+	[
+		local, object,
+		uuid(BC60FC08-9B6C-422E-A8DB-6064B393ED9C),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("IDispatchedTextPattern Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedTextPattern : IDispatch
+	{
+		HRESULT RangeFromPoint(
+			[in] POINT pt,
+			[out, retval] IUIAutomationTextRange ** range);
+
+		HRESULT RangeFromChild(
+			[in] IUIAutomationElement * child,
+			[out, retval] IUIAutomationTextRange ** range);
+
+		HRESULT GetSelection(
+			[out, retval] IUIAutomationTextRangeArray ** ranges);
+
+		HRESULT GetVisibleRanges(
+			[out, retval] IUIAutomationTextRangeArray ** ranges);
+
+		[propget] HRESULT DocumentRange(
+			[out, retval] IUIAutomationTextRange ** range);
+
+		[propget] HRESULT SupportedTextSelection(
+			[out, retval] enum SupportedTextSelection * supportedTextSelection);
+
+	}
+	*/
+
+#pragma endregion /* Patterns */
+
+#pragma region Other
+
+	[
+		local, object,
+		uuid(6E64DC40-9B9D-428A-8ECC-9FB7C08EF7DF),
+		odl,
+		dual,
+		oleautomation,
+		helpstring("IDispatchedUiAutomationTreeWalker Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedUiAutomationTreeWalker : IDispatch
+	{
+		[helpstring("method GetParentElement")]
+		HRESULT GetParentElement(
+			[in] IDispatchedUiAutomationElement * element,
+			[out, retval] IDispatchedUiAutomationElement ** parent);
+
+		[helpstring("method GetFirstChildElement")]
+		HRESULT GetFirstChildElement(
+			[in] IDispatchedUiAutomationElement * element,
+			[out, retval] IDispatchedUiAutomationElement ** first);
+
+		[helpstring("method GetLastChildElement")]
+		HRESULT GetLastChildElement(
+			[in] IDispatchedUiAutomationElement * element,
+			[out, retval] IDispatchedUiAutomationElement ** last);
+
+		[helpstring("method GetNextSiblingElement")]
+		HRESULT GetNextSiblingElement(
+			[in] IDispatchedUiAutomationElement * element,
+			[out, retval] IDispatchedUiAutomationElement ** next);
+
+		[helpstring("method GetPreviousSiblingElement")]
+		HRESULT GetPreviousSiblingElement(
+			[in] IDispatchedUiAutomationElement * element,
+			[out, retval] IDispatchedUiAutomationElement ** previous);
+
+		[helpstring("method NormalizeElement")]
+		HRESULT NormalizeElement(
+			[in] IDispatchedUiAutomationElement * element,
+			[out, retval] IDispatchedUiAutomationElement ** normalized);
+
+
+		[helpstring("method GetParentElementBuildCache")]
+		// Separate * CacheRequest names exist, because there’s no name overloading in COM
+		HRESULT GetParentElementBuildCache(
+			[in] IUIAutomationElement * element,
+			[in] IUIAutomationCacheRequest * cacheRequest,
+			[out, retval] IUIAutomationElement ** parent);
+
+		[helpstring("method GetFirstChildElementBuildCache")]
+		HRESULT GetFirstChildElementBuildCache(
+			[in] IUIAutomationElement * element,
+			[in] IUIAutomationCacheRequest * cacheRequest,
+			[out, retval] IUIAutomationElement ** first);
+
+		[helpstring("method GetLastChildElementBuildCache")]
+		HRESULT GetLastChildElementBuildCache(
+			[in] IUIAutomationElement * element,
+			[in] IUIAutomationCacheRequest * cacheRequest,
+			[out, retval] IUIAutomationElement ** last);
+
+		[helpstring("method GetNextSiblingElementBuildCache")]
+		HRESULT GetNextSiblingElementBuildCache(
+			[in] IUIAutomationElement * element,
+			[in] IUIAutomationCacheRequest * cacheRequest,
+			[out, retval] IUIAutomationElement ** next);
+
+		[helpstring("method GetPreviousSiblingElementBuildCache")]
+		HRESULT GetPreviousSiblingElementBuildCache(
+			[in] IUIAutomationElement * element,
+			[in] IUIAutomationCacheRequest * cacheRequest,
+			[out, retval] IUIAutomationElement ** previous);
+
+		[helpstring("method NormalizeElementBuildCache")]
+		HRESULT NormalizeElementBuildCache(
+			[in] IUIAutomationElement * element,
+			[in] IUIAutomationCacheRequest * cacheRequest,
+			[out, retval] IUIAutomationElement ** normalized);
+
+
+		[propget, helpstring("property Condition")]
+		HRESULT Condition(
+			[out, retval] IDispatchedUiAutomationCondition ** condition);
+
+	}
+
+	[
+		object,
+		uuid(48F3B401-EEFC-4D23-B81E-E8DB846ABFE9),
+		dual,
+		helpstring("IDispatchedMouseControl Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedMouseControl : IDispatch
+	{
+		[helpstring("method LeftClick")]
+		HRESULT LeftClick();
+		
+		[helpstring("method MoveTo")]
+		HRESULT MoveTo(
+			[in] LONG x,
+			[in] LONG y);
+	}
+
+#pragma endregion /* Other */
+
+	[
+		object,
+		uuid(F4DC2FBD-51E8-4CEE-9E14-2F49738881B6),
+		dual,
+		helpstring("IDispatchedUiAutomationElement Interface"),
+		pointer_default(unique)
+	]
+	interface IDispatchedUiAutomationElement : IDispatch
+	{
+		// Properties
+		[propget, helpstring("property CurrentProcessId")]
+		HRESULT CurrentProcessId(
+			[out, retval] int * retVal);
+
+		[propget, helpstring("property CurrentControlType")]
+		HRESULT CurrentControlType(
+			[out, retval] CONTROLTYPEID * retVal);
+
+		[propget, helpstring("property CurrentLocalizedControlType")]
+		HRESULT CurrentLocalizedControlType(
+			[out, retval] BSTR * retVal);
+
+		[propget, helpstring("property CurrentName")]
+		HRESULT CurrentName(
+			[out, retval] BSTR * retVal);
+
+		[propget, helpstring("property CurrentAcceleratorKey")]
+		HRESULT CurrentAcceleratorKey(
+			[out, retval] BSTR * retVal);
+
+		[propget, helpstring("property CurrentAccessKey")]
+		HRESULT CurrentAccessKey(
+			[out, retval] BSTR * retVal);
+
+		[propget, helpstring("property CurrentHasKeyboardFocus")]
+		HRESULT CurrentHasKeyboardFocus(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CurrentIsKeyboardFocusable")]
+		HRESULT CurrentIsKeyboardFocusable(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CurrentIsEnabled")]
+		HRESULT CurrentIsEnabled(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CurrentAutomationId")]
+		HRESULT CurrentAutomationId(
+			[out, retval] BSTR * retVal);
+
+		[propget, helpstring("property CurrentClassName")]
+		HRESULT CurrentClassName(
+			[out, retval] BSTR * retVal);
+		
+		[propget, helpstring("property CurrentHelpText")]
+		HRESULT CurrentHelpText(
+			[out, retval] BSTR * retVal);
+
+		[propget, helpstring("property CurrentCulture")]
+		HRESULT CurrentCulture(
+			[out, retval] int * retVal);
+
+		[propget, helpstring("property CurrentIsControlElement")]
+		HRESULT CurrentIsControlElement(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CurrentIsContentElement")]
+		HRESULT CurrentIsContentElement(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CurrentIsPassword")]
+		HRESULT CurrentIsPassword(
+			[out, retval] BOOL * retVal);
+
+		[propget, helpstring("property CurrentNativeWindowHandle")]
+		HRESULT CurrentNativeWindowHandle(
+			[out, retval] LONG * retVal);
+
+		[propget, helpstring("property CurrentItemType")]
+		HRESULT CurrentItemType(
+			[out, retval] BSTR * retVal);
+
+		[propget, helpstring("property CurrentIsOffscreen")]
+		HRESULT CurrentIsOffscreen(
+			[out, retval] BOOL * retVal);
+		
+		[propget, helpstring("property CurrentOrientation")]
+		HRESULT CurrentOrientation (
+		[out, retval] enum OrientationType * retVal );
+
+		[propget, helpstring("property CurrentFrameworkId")]
+		HRESULT CurrentFrameworkId (
+		[out, retval] BSTR * retVal );
+
+		[propget, helpstring("property CurrentIsRequiredForForm")]
+		HRESULT CurrentIsRequiredForForm (
+		[out, retval] BOOL * retVal );
+
+		[propget, helpstring("property CurrentItemStatus")]
+		HRESULT CurrentItemStatus (
+		[out, retval] BSTR * retVal );
+		
+		[propget, helpstring("property CurrentBoundingRectangle")]
+		HRESULT CurrentBoundingRectangle (
+			[out, retval] IDispRect ** rect);
+		
+		[propget, helpstring("property CurrentLabeledBy")]
+		HRESULT CurrentLabeledBy (
+		[out, retval] IUIAutomationElement ** retVal );
+
+		[propget, helpstring("property CurrentAriaRole")]
+		HRESULT CurrentAriaRole (
+		[out, retval] BSTR * retVal );
+
+		[propget, helpstring("property CurrentAriaProperties")]
+		HRESULT CurrentAriaProperties (
+		[out, retval] BSTR * retVal );
+
+		[propget, helpstring("property CurrentIsDataValidForForm")]
+		HRESULT CurrentIsDataValidForForm (
+		[out, retval] BOOL * retVal );
+		/*
+		[propget, helpstring("property CurrentControllerFor")]
+		HRESULT CurrentControllerFor (
+		[out, retval] IUIAutomationElementArray ** retVal );
+		
+		[propget, helpstring("property CurrentDescribedBy")]
+		HRESULT CurrentDescribedBy (
+		[out, retval] IUIAutomationElementArray ** retVal );
+
+		[propget, helpstring("property CurrentFlowsTo")]
+		HRESULT CurrentFlowsTo (
+		[out, retval] IUIAutomationElementArray ** retVal );
+
+		[propget, helpstring("property CurrentProviderDescription")]
+		HRESULT CurrentProviderDescription (
+		[out, retval] BSTR * retVal );
+
+		*/
+
+
+		// Methods
+		[helpstring("method SetFocus")]
+		HRESULT SetFocus(
+			[out, retval] BOOL * retVal);
+
+		[helpstring("method GetRuntimeId")]
+		HRESULT GetRuntimeId(
+			[out, retval] SAFEARRAY(VARIANT) * runtimeId);
+
+		[helpstring("method FindFirst")]
+		HRESULT FindFirst(
+			[in] enum TreeScope scope,
+			[in] IDispatchedUiAutomationCondition * condition,
+			//[out, retval] IUIAutomationElement ** found);
+			[out, retval] IDispatchedUiAutomationElement ** found);
+
+		[helpstring("method FindAll")]
+		HRESULT FindAll(
+			[in] enum TreeScope scope,
+			[in] IDispatchedUiAutomationCondition * condition,
+			[out, retval] SAFEARRAY(VARIANT) * found); // SAFEARRAY(IUnknown)
+
+		[helpstring("method FindFirstBuildCache")]
+		HRESULT FindFirstBuildCache(
+			[in] enum TreeScope scope,
+			[in] IDispatchedUiAutomationCondition * condition,
+			[in] IUIAutomationCacheRequest * cacheRequest,
+			[out, retval] IDispatchedUiAutomationElement ** found);
+
+		[helpstring("method GetCurrentPattern")]
+		HRESULT GetCurrentPattern(
+			[in] PATTERNID patternId,
+			[out, retval] IUnknown ** patternObject);
+
+		[helpstring("method GetClickablePoint")]
+		HRESULT GetClickablePoint(
+			[out, retval] IDispPoint ** clickable);
+
+		// Extension Methods
+		[helpstring("method toString")]
+		HRESULT toString(
+			[out, retval] BSTR * retVal);
+
+	}
+	/*
+	[uuid(A0BDC138-B943-4C63-99C4-C66C2C699BCB), noncreatable]
+	coclass UiAutomationPropertyCondition
+	{
+		[default] interface IDispatchedUiAutomationPropertyCondition;
+	};
+
+	[uuid(F292ECD6-6F66-4364-96D8-3C0C14C33EAB), noncreatable]
+	coclass UiAndCondition
+	{
+		[default] interface IDispatchedUiAutomationAndCondition;
+	};
+	*/
+	/*
+	[uuid(7A491480-C6FA-4634-8B21-4BF6E3B16A80), noncreatable]
+	coclass UiAutomationElement
+	{
+		// Main
+		[default] interface IDispatchedUiAutomationElement;
+		// Patterns
+		//interface IDispatchedInvokePattern;
+		//interface IDispatchedGridPattern;
+	};
+	*/
+	[uuid(4B6DF223-461A-4065-ABB2-F9718BABC855)]
+	coclass UiAutomation
+	{
+		[default] interface IDispatchedUiAutomation;
+	};
+};
